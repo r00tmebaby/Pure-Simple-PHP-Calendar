@@ -3,8 +3,8 @@ session_start();
 
 $_SESSION['month'] 	= isset($_GET['month'])? (int)$_GET['month']: (int)date('m');
 $_SESSION['year'] 	= isset($_GET['year'])? (int)$_GET['year']: (int) date('Y');
-$months 			= array (1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8=>'Aug',9=>'Sep',10=>'Oct',11=>'Nov',12=>'Dec');
-$week 				= array ('Mon','Tue','Wed','Thu','Fri','Sat','Sun');
+$months 		= array (1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8=>'Aug',9=>'Sep',10=>'Oct',11=>'Nov',12=>'Dec');
+$week 			= array ('Mon','Tue','Wed','Thu','Fri','Sat','Sun');
 
 if($_SESSION['month'] > 12){
 	$_SESSION['year'] 	= $_GET['year'] +1;
@@ -50,10 +50,10 @@ elseif($_SESSION['month'] < 1 || $_SESSION['year'] > 2050 || $_SESSION['year'] <
 				$event_test = array(24,  5,     2020, $event_content);
 				#-------------------------------
 	
-				$daysInCurrentMonth = cal_days_in_month(CAL_GREGORIAN, $_SESSION['month'], $_SESSION['year']);	
+				$daysInCurrentMonth 	= cal_days_in_month(CAL_GREGORIAN, $_SESSION['month'], $_SESSION['year']);	
 				$firstDayOfWeek 	= jddayofweek(gregoriantojd($_SESSION['month'],1,$_SESSION['year']),1);
-				$tdOffset 			= date("w", strtotime($firstDayOfWeek));
-				$days 				= 0;
+				$tdOffset 		= date("w", strtotime($firstDayOfWeek));
+				$days 			= 0;
 				
 				for($i=0;$i < 35; $i++){								
 					while($tdOffset > 1){
